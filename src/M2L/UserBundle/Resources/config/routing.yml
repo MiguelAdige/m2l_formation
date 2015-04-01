@@ -1,0 +1,21 @@
+m2l_inscription:
+    path:   /inscription
+    defaults: { _controller: M2LUserBundle:User:inscription }
+
+login:
+    pattern:   /login
+    defaults:  { _controller: M2LUserBundle:User:login }
+
+login_check:
+    pattern:   /login_check
+
+logout:
+    pattern:   /logout
+
+m2l_profil_edit:
+    path:    /profil/edit
+    defaults: { _controller: M2LUserBundle:User:edit }
+
+m2l_profil_view:
+    path:    /profil/{id}
+    defaults: { _controller: M2LUserBundle:User:view }

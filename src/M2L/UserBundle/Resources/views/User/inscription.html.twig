@@ -1,0 +1,14 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+   <h2>Inscription</h2>
+
+	{% for flashMessage in app.session.flashbag.get('notice') %}
+
+	    {{ flashMessage }}
+
+	{% endfor %}
+
+   {{ form(form) }}
+
+{% endblock %}

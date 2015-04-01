@@ -1,0 +1,24 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+   <h2>Connexion</h2>
+
+	{% for flashMessage in app.session.flashbag.get('notice') %}
+
+	    {{ flashMessage }}
+
+	{% endfor %}
+
+   <form method="post" action="{{ path('login_check') }}">
+            <div>
+                <input type="text" id="_username" name="_username" required="required" placeholder="Pseudo" value="{{ pseudo }}" />
+            </div>
+            <div>
+                <input type="password" id="_password" name="_password" required="required" placeholder="Mot de passe" />
+            </div>
+            <div>
+                <button type="submit" id="Se connecter">Se connecter</button>
+            </div>
+        </form>
+
+{% endblock %}

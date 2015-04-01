@@ -1,0 +1,22 @@
+M2L\UserBundle\Entity\User:
+    properties:
+        username:
+            - NotBlank: ~
+
+        nom:
+            - NotBlank: ~
+
+        password:
+            - NotBlank: ~
+    
+        ddn:
+            - NotBlank: ~
+
+        ville:
+            - NotBlank: ~
+
+        sexe:
+            - NotBlank: ~
+
+        email:
+            - Email: ~

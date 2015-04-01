@@ -1,0 +1,2 @@
+_m2l_user:
+    resource: "@M2LUserBundle/Resources/config/routing.yml"

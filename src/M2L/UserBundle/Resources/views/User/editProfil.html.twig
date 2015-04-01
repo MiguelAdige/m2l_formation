@@ -1,0 +1,14 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+	<h2>Mon profil</h2>
+	<span>Pseudo : {{ user.username }}</span><br/>
+	<span>Nom : {{ user.nom }}</span><br/>
+	<span>Prénom : {{ user.prenom }}</span><br/>
+	<span>Date de naissance : {{ user.ddn | date('d-m-Y') }}</span><br/>
+	<span>Ville : {{ user.ville }}</span>
+
+	<h2>Modifier mon profil</h2>
+	{{ form(form) }}
+
+{% endblock %}

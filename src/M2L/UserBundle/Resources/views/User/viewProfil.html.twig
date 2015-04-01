@@ -1,0 +1,9 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+	<h2>Profil de {{ user.username }}</h2>
+	<span>Date de naissance : {{ user.ddn | date('d-m-Y') }}</span><br/>
+	<span>Ville : {{ user.ville }}</span><br/>
+	<span>Description : {{ user.description }}</span><br/>
+
+{% endblock %}
