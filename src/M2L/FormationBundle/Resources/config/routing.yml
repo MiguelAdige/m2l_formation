@@ -1,0 +1,3 @@
+m2_l_formation_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: M2LFormationBundle:Default:index }

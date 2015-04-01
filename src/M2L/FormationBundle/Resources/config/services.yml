@@ -1,0 +1,4 @@
+services:
+#    m2_l_formation.example:
+#        class: M2L\FormationBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

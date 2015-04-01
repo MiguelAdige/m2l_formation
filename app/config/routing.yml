@@ -1,2 +1,6 @@
+m2_l_formation:
+    resource: "@M2LFormationBundle/Resources/config/routing.yml"
+    prefix:   /
+
 _m2l_user:
     resource: "@M2LUserBundle/Resources/config/routing.yml"
