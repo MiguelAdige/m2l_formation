@@ -4,9 +4,9 @@ namespace M2L\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
-use M2L\UserBundle\Entity\messagerie;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use Symfony\Component\Security\Core\User\EquatableInterface;
+use M2L\FormationBundle\Entity\Formation;
 
 /**
  * User
@@ -105,10 +105,17 @@ class User implements AdvancedUserInterface, \Serializable
      */
     private $isActive;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="M2L\FormationBundle\Entity\Formation", inversedBy="user")
+     * @ORM\JoinTable(name="user_formation")
+     **/
+    private $formations;
+
     public function __construct()
     {
         $this->salt = md5(uniqid(null, true));
         $this->isActive = true;
+        $this->formations = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -468,5 +475,38 @@ class User implements AdvancedUserInterface, \Serializable
     public function getIsActive()
     {
         return $this->isActive;
+    }
+
+    /**
+     * Add formations
+     *
+     * @param \M2L\FormationBundle\Entity\Formation $formations
+     * @return User
+     */
+    public function addFormation(\M2L\FormationBundle\Entity\Formation $formations)
+    {
+        $this->formations[] = $formations;
+
+        return $this;
+    }
+
+    /**
+     * Remove formations
+     *
+     * @param \M2L\FormationBundle\Entity\Formation $formations
+     */
+    public function removeFormation(\M2L\FormationBundle\Entity\Formation $formations)
+    {
+        $this->formations->removeElement($formations);
+    }
+
+    /**
+     * Get formations
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFormations()
+    {
+        return $this->formations;
     }
 }

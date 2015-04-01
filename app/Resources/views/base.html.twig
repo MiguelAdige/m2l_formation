@@ -2,7 +2,7 @@
 <html lang="fr">
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}M2L{% endblock %}</title>
+        <title>{% block title %}M2L Formation{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -10,24 +10,25 @@
     <body>
         <header>
             <div class="top-area">
-                <h1 class="logo left"><a href=""><img src="{{ asset('img/logo.PNG') }}" alt="M2L"></a></h1>
+                <h1 class="logo left"><a href=""><img src="{{ asset('img/logo.png') }}" alt="M2L"></a></h1>
                 <div class="clear"></div>
             </div>
 
             <nav class="clear">
                 <ul id="menu">
-                    <li><a href="{{ path('m2l_ligue_homepage') }}">Accueil</a></li>
-                    <li><a href="{{ path('m2l_annonces_home') }}">Recherche de partenaire</a></li>
+                    <li><a href="{{ path('m2l_homepage') }}">Accueil</a></li>
+                    <li><a href="{{ path('m2l_formation') }}">Les Formations</a></li>
                     {% if is_granted('ROLE_USER') == false %}
                     <li><a href="{{ path('m2l_inscription') }}">Inscription</a></li>
                     
                     <li><a href="{{ path('login') }}">Connexion</a></li>
                     {% endif %}
+                    <!-- {% if is_granted('ROLE_ADMIN') %}
+                    <li><a href="{{ path('m2l_formation_add') }}">Ajouter une annonce</a></li>
+                    {% endif %} -->
                     {% if is_granted('ROLE_USER') %}
-                    <li><a href="{{ path('m2l_annonces_add') }}">Ajouter une annonce</a></li>
                     <li><a href="{{ path('m2l_profil_edit') }}">Modifier mon profil</a></li>
-                    <li><a href="{{ path('m2l_annonces_post') }}">Mes annonces</a></li>
-                    <li><a href="{{ path('messagerie_homepage') }}">Messagerie</a></li>
+                    <li><a href="{{ path('m2l_my_formation') }}">Mes Formations</a></li>
                     <li><a href="{{ path('logout') }}">Déconnexion</a></li>
                     {% endif %}
                     

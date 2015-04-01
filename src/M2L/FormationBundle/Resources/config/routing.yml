@@ -1,3 +1,19 @@
-m2_l_formation_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: M2LFormationBundle:Default:index }
+m2l_homepage:
+    path:     /
+    defaults: { _controller: M2LFormationBundle:Formation:index }
+
+m2l_formation:
+    path:   /formations
+    defaults: { _controller: M2LFormationBundle:Formation:listformations }
+
+m2l_formation_add:
+    path:   /formations/add
+    defaults: { _controller: M2LFormationBundle:Formation:add }
+
+m2l_formation_edit:
+    path:   /formations/edit/{id}
+    defaults: { _controller: M2LFormationBundle:Formation:edit }
+
+m2l_my_formation:
+    path:   /mes_formations
+    defaults: { _controller: M2LFormationBundle:Formation:listformations }
