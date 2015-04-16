@@ -1,8 +1,5 @@
 M2L\UserBundle\Entity\User:
     properties:
-        username:
-            - NotBlank: ~
-
         nom:
             - NotBlank: ~
 
@@ -13,9 +10,6 @@ M2L\UserBundle\Entity\User:
             - NotBlank: ~
 
         ville:
-            - NotBlank: ~
-
-        sexe:
             - NotBlank: ~
 
         email:

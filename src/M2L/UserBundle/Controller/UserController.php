@@ -27,7 +27,7 @@ class UserController extends Controller
             );
         }
 
-        return $this->render('M2LUserBundle:User:login.html.twig', array('pseudo' => $session->get(SecurityContext::LAST_USERNAME)));
+        return $this->render('M2LUserBundle:User:login.html.twig');
     }
 
     public function inscriptionAction(Request $request)
@@ -47,11 +47,9 @@ class UserController extends Controller
     		$doctrine = $this->getDoctrine();
     		$em = $doctrine->getManager();
 
-    		// Vérification de Pseudo déjà existant
     		$repo = $em->getRepository('M2LUserBundle:User');
-			if(!$repo->findByUsername($user->getUsername())){
 				// Vérification de mails déjà existant
-				if(!$repo->findByUsername($user->getEmail())){
+				if(!$repo->findByEmail($user->getEmail())){
 					$em->persist($user);
 		    		$em->flush();
 		    			
@@ -60,10 +58,6 @@ class UserController extends Controller
 				else{
 					$this->get('session')->getFlashBag()->add('notice', 'Adresse Email existante');
 				}
-			}
-			else{
-				$this->get('session')->getFlashBag()->add('notice', 'Pseudo existant');
-			}
     	}
 
         return $this->render('M2LUserBundle:User:inscription.html.twig', array('form' => $form->createView()));

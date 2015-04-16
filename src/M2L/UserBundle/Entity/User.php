@@ -68,13 +68,6 @@ class User implements AdvancedUserInterface, \Serializable
     private $ville;
 
     /**
-     * @var boolean
-     *
-     * @ORM\Column(name="sexe", type="string", length=30)
-     */
-    private $sexe;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="description", type="text", nullable=true)
@@ -264,29 +257,6 @@ class User implements AdvancedUserInterface, \Serializable
     public function getVille()
     {
         return $this->ville;
-    }
-
-    /**
-     * Set sexe
-     *
-     * @param boolean $sexe
-     * @return User
-     */
-    public function setSexe($sexe)
-    {
-        $this->sexe = $sexe;
-    
-        return $this;
-    }
-
-    /**
-     * Get sexe
-     *
-     * @return boolean 
-     */
-    public function getSexe()
-    {
-        return $this->sexe;
     }
 
     /**
