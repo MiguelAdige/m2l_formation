@@ -5,7 +5,7 @@
 
 	{% for flashMessage in app.session.flashbag.get('notice') %}
 
-	    {{ flashMessage }}
+	    <div class="bg-succes">{{ flashMessage }}</div>
 
 	{% endfor %}
 

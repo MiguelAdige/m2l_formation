@@ -60,7 +60,7 @@ class Formation
     /**
      * @var integer
      *
-     * @ORM\Column(name="nbr_inscrit", type="integer")
+     * @ORM\Column(name="nbr_inscrit", type="integer", nullable=true)
      */
     private $nbrInscrit;
 
@@ -72,6 +72,7 @@ class Formation
     public function __construct()
     {
         $this->user = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->datePost = new \Datetime();
     }
 
     /**

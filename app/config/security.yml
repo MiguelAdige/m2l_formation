@@ -24,6 +24,10 @@ security:
             security: false
 
         main:
+            pattern: ^/
+            anonymous: true
+            switch_user: true
+            provider: main
 
             form_login:
                 login_path: /login
