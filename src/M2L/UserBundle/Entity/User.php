@@ -104,11 +104,19 @@ class User implements AdvancedUserInterface, \Serializable
      **/
     private $formations;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="roles", type="integer")
+     */
+    private $roles;
+
     public function __construct()
     {
         $this->salt = md5(uniqid(null, true));
         $this->isActive = true;
         $this->formations = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->roles = 2;
     }
 
     /**
@@ -366,7 +374,7 @@ class User implements AdvancedUserInterface, \Serializable
      */
     public function setRoles($roles)
     {
-        $this->groups_id = $roles;
+        $this->roles = $roles;
 
         return $this;
     }
@@ -376,7 +384,17 @@ class User implements AdvancedUserInterface, \Serializable
      */
     public function getRoles()
     {
-        return array('ROLE_USER');
+        switch ($this->roles) {
+            case 1:
+                return array('ROLE_USER');
+                break;
+            case 2:
+                return array('ROLE_USER', 'ROLE_ADMIN', 'ROLE_ALLOWED_TO_SWITCH');
+                break;
+            default:
+                return array('ROLE_USER');
+                break;
+        }
     }
 
 

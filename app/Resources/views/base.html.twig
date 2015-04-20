@@ -23,9 +23,9 @@
                     
                     <li><a href="{{ path('login') }}">Connexion</a></li>
                     {% endif %}
-                    <!-- {% if is_granted('ROLE_ADMIN') %}
-                    <li><a href="{{ path('m2l_formation_add') }}">Ajouter une annonce</a></li>
-                    {% endif %} -->
+                    {% if is_granted('ROLE_ADMIN') %}
+                    <li><a href="{{ path('m2l_formation_add') }}">Ajouter une formation</a></li>
+                    {% endif %}
                     {% if is_granted('ROLE_USER') %}
                     <li><a href="{{ path('m2l_profil_edit') }}">Modifier mon profil</a></li>
                     <li><a href="{{ path('m2l_my_formation') }}">Mes Formations</a></li>
