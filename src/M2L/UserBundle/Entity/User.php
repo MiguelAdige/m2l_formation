@@ -77,13 +77,6 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * @var string
      *
-     * @ORM\Column(name="avatar", type="string", length=200, nullable=true)
-     */
-    private $avatar;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="email", type="string", length=50)
      */
     private $email;
@@ -245,29 +238,6 @@ class User implements AdvancedUserInterface, \Serializable
     }
 
     /**
-     * Set ville
-     *
-     * @param string $ville
-     * @return User
-     */
-    public function setVille($ville)
-    {
-        $this->ville = $ville;
-    
-        return $this;
-    }
-
-    /**
-     * Get ville
-     *
-     * @return string 
-     */
-    public function getVille()
-    {
-        return $this->ville;
-    }
-
-    /**
      * Set description
      *
      * @param string $description
@@ -288,29 +258,6 @@ class User implements AdvancedUserInterface, \Serializable
     public function getDescription()
     {
         return $this->description;
-    }
-
-    /**
-     * Set avatar
-     *
-     * @param string $avatar
-     * @return User
-     */
-    public function setAvatar($avatar)
-    {
-        $this->avatar = $avatar;
-    
-        return $this;
-    }
-
-    /**
-     * Get avatar
-     *
-     * @return string 
-     */
-    public function getAvatar()
-    {
-        return $this->avatar;
     }
 
     /**
@@ -496,5 +443,28 @@ class User implements AdvancedUserInterface, \Serializable
     public function getFormations()
     {
         return $this->formations;
+    }
+
+    /**
+     * Set ville
+     *
+     * @param string $ville
+     * @return User
+     */
+    public function setVille($ville)
+    {
+        $this->ville = $ville;
+    
+        return $this;
+    }
+
+    /**
+     * Get ville
+     *
+     * @return string 
+     */
+    public function getVille()
+    {
+        return $this->ville;
     }
 }

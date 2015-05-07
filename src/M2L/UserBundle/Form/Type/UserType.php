@@ -21,7 +21,6 @@ class UserType extends AbstractType
             ->add('email', 'email')
             ->add('password', 'password', array('label' => 'Mot de passe'))
             ->add('ddn', 'birthday', array('label' => 'Date de naissance'))
-            ->add('ville', 'text')
             ->add('Enregistrer', 'submit');
     }
     
