@@ -64,11 +64,6 @@ class Formation
      */
     private $nbrInscrit;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="M2L\UserBundle\Entity\User", mappedBy="formation")
-     **/
-    private $user;
-
     public function __construct()
     {
         $this->user = new \Doctrine\Common\Collections\ArrayCollection();

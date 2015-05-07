@@ -85,8 +85,11 @@ class User implements AdvancedUserInterface, \Serializable
     private $isActive;
 
     /**
-     * @ORM\ManyToMany(targetEntity="M2L\FormationBundle\Entity\Formation", inversedBy="user")
-     * @ORM\JoinTable(name="user_formation")
+     * @ORM\ManyToMany(targetEntity="M2L\FormationBundle\Entity\Formation")
+     * @ORM\JoinTable(name="user_formation",
+     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="formation_id", referencedColumnName="id", unique=true)}
+     *      )
      **/
     private $formations;
 
