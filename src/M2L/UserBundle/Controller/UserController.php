@@ -44,6 +44,8 @@ class UserController extends Controller
 			$password = $encoder->encodePassword($user->getPassword(), $user->getSalt());
 			$user->setPassword($password);
 
+            $user->setUsername($user->getPrenom());
+
     		$doctrine = $this->getDoctrine();
     		$em = $doctrine->getManager();
 

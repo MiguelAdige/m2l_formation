@@ -63,13 +63,6 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * @var string
      *
-     * @ORM\Column(name="ville", type="string", length=60)
-     */
-    private $ville;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
@@ -443,28 +436,5 @@ class User implements AdvancedUserInterface, \Serializable
     public function getFormations()
     {
         return $this->formations;
-    }
-
-    /**
-     * Set ville
-     *
-     * @param string $ville
-     * @return User
-     */
-    public function setVille($ville)
-    {
-        $this->ville = $ville;
-    
-        return $this;
-    }
-
-    /**
-     * Get ville
-     *
-     * @return string 
-     */
-    public function getVille()
-    {
-        return $this->ville;
     }
 }

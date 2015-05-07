@@ -9,8 +9,5 @@ M2L\UserBundle\Entity\User:
         ddn:
             - NotBlank: ~
 
-        ville:
-            - NotBlank: ~
-
         email:
             - Email: ~
