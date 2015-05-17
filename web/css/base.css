@@ -442,3 +442,14 @@ FOOTER
     padding: 5px;
     margin: 5px;
 }
+.btn{
+    background: #007295;
+    padding: 5px 10px;
+    color: #fff;
+    font-weight: 500;
+}
+.notice{
+    background: #ffcc00;
+    color:#fff !important;
+    padding: 5px 10px;
+}

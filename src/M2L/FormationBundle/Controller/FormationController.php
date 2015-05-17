@@ -2,6 +2,7 @@
 
 namespace M2L\FormationBundle\Controller;
 
+use M2L\UserBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use M2L\FormationBundle\Entity\Formation;
 use M2L\FormationBundle\Form\Type\FormationType;
@@ -51,9 +52,9 @@ class FormationController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-        $formation = $em->getRepository("M2LFormationBundle:Formation")->find($id);
+        $formation = $em->getRepository("M2LFormationBundle:Formation")->findOneById($id);
 
-        return $this->render("M2LFormationBundle:Formation:viewFormation.html.twig", array(
+        return $this->render("M2LFormationBundle:Default:viewFormation.html.twig", array(
             "formation"   =>  $formation
             ));
     }
@@ -70,13 +71,38 @@ class FormationController extends Controller
 
             $em = $this->getDoctrine()->getManager();
 
-            $listFormation = $user->getFormations();
+            $user = $em->getRepository("M2LUserBundle:User")->find($this->getUser()->getId());
+
+            /*var_dump($user->getFormations()[0]);
+            die();*/
 
             return $this->render("M2LFormationBundle:Default:userFormation.html.twig", array(
-                "listeFormation" =>  $listFormation,
-                "user"          =>  $user
+                "listeFormation" =>  $user->getFormations()
                 ));
 
         }
+    }
+
+    public function addMyFormationAction($id)
+    {
+        if (!$this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->redirect($this->generateUrl("login"));
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $formation = $em->getRepository("M2LFormationBundle:Formation")->findOneById($id);
+
+        $user = $this->getUser();
+        $user->addFormation($formation);
+
+        $em->persist($user);
+
+        if(!$em->flush()){
+            $this->get('session')->getFlashBag()->add('notice', 'Votre candidature à bien été enregistré.');
+        }
+
+        return $this->redirect($this->generateUrl("m2l_formation_view", array('id' => $id)));
+
+
     }
 }

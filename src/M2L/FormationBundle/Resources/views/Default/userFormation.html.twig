@@ -1,30 +1,30 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-	<div id="annonce-view">
-		<table>
-			<tr>
-				<th colspan="2">
-					<h3>{{ formation.titre }}</h3>
-				</th>
-			</tr>
-			<tr>
-				<td>
-					<div class="annonce-preview">
-						<p>
-							<span>Description :</span><br/>
-							{{ formation.description }}
-						</p>
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="2" class="annonce-date">
-					<span>
-						{{ formation.date | date("d/m/Y") }}
-					</span>
-				</td>
-			</tr>
-		</table>
-	</div>
+    <ul id="annonces-liste">
+    {% for formation in listeFormation | reverse %}
+    <li>
+        <table>
+            <tr>
+                <td class="formation-preview">
+                    <h3><a href="{{ path('m2l_formation_view', { 'id' : formation.id }) }}">{{ formation.titre }}</a></h3>
+                    <p>
+                        Du {{formation.dateDebut | date("d/m/Y")}} au {{formation.dateFin | date("d/m/Y")}}<br/>
+                        Nombre de participants : {{formation.nbrInscrit}} <br/>
+                        Description :<br/>
+                        {{ formation.description | slice(0,350) }}... <a href="{{ path('m2l_formation_view', { 'id' : formation.id }) }}">Voir plus</a>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="formation-date">
+							<span>
+								{{ formation.datePost | date("d/m/Y") }}
+							</span>
+                </td>
+            </tr>
+        </table>
+        </ii>
+        {% endfor %}
+        <ul>
 {% endblock %}

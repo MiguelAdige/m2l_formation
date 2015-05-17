@@ -2,8 +2,12 @@
 
 {% block body %}
 	<h2>Liste de mes formations</h2>
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+
+        <div class="bg-success">{{ flashMessage }}</div>
+
+    {% endfor %}
 	<ul id="annonces-liste">
-		{% for formation in listeFormation | reverse %}
 			<li>
 				<table>
 					<tr>
@@ -20,12 +24,25 @@
 					<tr>
 						<td colspan="2" class="annonce-date">
 							<span>
-								{{ formation.date | date("d/m/Y") }}
+								{{ formation.datePost | date("d/m/Y") }}
 							</span>
 						</td>
 					</tr>
 				</table>
+                    {% set viewLink = null %}
+                    {% for formationLink in app.user.formations %}
+                        {% if formation.id == formationLink.id %}
+                            {% set viewLink = true %}
+                        {% else %}
+                            {% set viewLink = false %}
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if not viewLink %}
+                    <a class="btn" href="{{ path('m2l_add_my_formation', { 'id' : formation.id }) }}">Postuler pour cette formation</a>
+                    {% else %}
+                        <p class="notice">Vous avez dejà postuler pour ce poste !</p>
+                    {% endif %}
 			</ii>
-		{% endfor %}
 	<ul>
 {% endblock %}

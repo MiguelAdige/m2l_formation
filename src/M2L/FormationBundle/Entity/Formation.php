@@ -4,7 +4,6 @@ namespace M2L\FormationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use M2L\UserBundle\Entity\User;
-use M2L\FormationBundle\Entity\Candidates;
 
 /**
  * Formation
