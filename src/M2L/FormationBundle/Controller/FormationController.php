@@ -12,7 +12,14 @@ class FormationController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('M2LFormationBundle:Default:index.html.twig');
+
+        $em = $this->getDoctrine()->getManager();
+        
+        $allFormations = $em->getRepository("M2LFormationBundle:Formation")->findAll();
+
+        return $this->render('M2LFormationBundle:Default:index.html.twig', array(
+            "allFormations" =>      $allFormations
+            ));
     }
 
     public function addAction(Request $request)

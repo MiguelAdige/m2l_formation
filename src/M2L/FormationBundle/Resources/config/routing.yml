@@ -4,7 +4,7 @@ m2l_homepage:
 
 m2l_formation:
     path:   /formations
-    defaults: { _controller: M2LFormationBundle:Formation:listformations }
+    defaults: { _controller: M2LFormationBundle:Formation:index }
 
 m2l_formation_add:
     path:   /formations/add

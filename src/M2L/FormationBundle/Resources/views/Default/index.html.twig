@@ -1,4 +1,38 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
+	<h2>Liste des formations disponibles</h2>
+	<ul id="annonces-liste">
+		{% for formation in allFormations | reverse %}
+			<li>
+				<table>
+					<tr>
+						<td class="img-user">
+							<img src="http://openclassrooms.com/bundles/common/images/avatar_defaut.png?1e6e75ff4w32b" alt="Avatar de l'utilisateur"><br/>
+							<span class="pseudo-utilisateur">
+								{{ formation.user.username }}
+							</span><br/>
+						</td>
+						<td class="formation-preview">
+							<h3><a href="{{ path('m2l_formations_view', { 'id' : formation.id }) }}">{{ formation.titre }}</a></h3>
+							<p>
+								<span>Du {date debut} au {date fin}</span><br/>
+								<span>Nombre de participants : {nbr inscrit}</span>
+								<span>Description :</span><br/>
+								{{ formation.description | slice(0,350) }}... <a href="{{ path('m2l_formations_view', { 'id' : formation.id }) }}">Voir plus</a>
+							</p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="formation-date">
+							<span>
+								{date post}
+								<!-- {{ formation.date | date("d/m/Y") }}-->
+							</span>
+						</td>
+					</tr>
+				</table>
+			</ii>
+		{% endfor %}
+	<ul>
 {% endblock %}
