@@ -3,6 +3,7 @@
 namespace M2L\FormationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use M2L\UserBundle\Entity\User;
 
 /**
  * Formation
@@ -59,18 +60,24 @@ class Formation
     /**
      * @var integer
      *
-     * @ORM\Column(name="nbr_inscrit", type="integer")
+     * @ORM\Column(name="nbr_inscrit", type="integer", nullable=true)
      */
     private $nbrInscrit;
 
     /**
-     * @ORM\ManyToMany(targetEntity="User", mappedBy="formation")
-     **/
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="M2L\UserBundle\Entity\User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * })
+     */
     private $user;
 
     public function __construct()
     {
         $this->user = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->datePost = new \Datetime();
     }
 
     /**
@@ -220,4 +227,5 @@ class Formation
     {
         return $this->nbrInscrit;
     }
+
 }

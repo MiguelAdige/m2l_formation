@@ -4,6 +4,7 @@ namespace M2L\FormationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use M2L\UserBundle\Entity\User;
+use M2L\FormationBundle\Entity\Candidates;
 
 /**
  * Formation
@@ -64,9 +65,20 @@ class Formation
      */
     private $nbrInscrit;
 
+    /**
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="M2L\UserBundle\Entity\User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * })
+     */
+    private $user;
+
     public function __construct()
     {
         $this->user = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->candidates = new \Doctrine\Common\Collections\ArrayCollection();
         $this->datePost = new \Datetime();
     }
 
@@ -218,33 +230,24 @@ class Formation
         return $this->nbrInscrit;
     }
 
+
     /**
-     * Add user
+     * Set user
      *
      * @param \M2L\UserBundle\Entity\User $user
      * @return Formation
      */
-    public function addUser(\M2L\UserBundle\Entity\User $user)
+    public function setUser(\M2L\UserBundle\Entity\User $user = null)
     {
-        $this->user[] = $user;
+        $this->user = $user;
 
         return $this;
     }
 
     /**
-     * Remove user
-     *
-     * @param \M2L\UserBundle\Entity\User $user
-     */
-    public function removeUser(\M2L\UserBundle\Entity\User $user)
-    {
-        $this->user->removeElement($user);
-    }
-
-    /**
      * Get user
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \M2L\UserBundle\Entity\User 
      */
     public function getUser()
     {

@@ -30,6 +30,8 @@ class FormationController extends Controller
 		if ($request->isMethod("POST")) {
 			if ($form->handleRequest($request)) {
 				$em = $this->getDoctrine()->getManager();
+                $Formation->setUser($this->getUser());
+//                var_dump($Formation); die();
 				$em->persist($Formation);
 				$em->flush();
 

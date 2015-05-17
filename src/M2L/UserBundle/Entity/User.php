@@ -85,15 +85,6 @@ class User implements AdvancedUserInterface, \Serializable
     private $isActive;
 
     /**
-     * @ORM\ManyToMany(targetEntity="M2L\FormationBundle\Entity\Formation")
-     * @ORM\JoinTable(name="user_formation",
-     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="formation_id", referencedColumnName="id", unique=true)}
-     *      )
-     **/
-    private $formations;
-
-    /**
      * @var integer
      *
      * @ORM\Column(name="roles", type="integer")
@@ -104,7 +95,6 @@ class User implements AdvancedUserInterface, \Serializable
     {
         $this->salt = md5(uniqid(null, true));
         $this->isActive = true;
-        $this->formations = new \Doctrine\Common\Collections\ArrayCollection();
         $this->roles = 2;
     }
 
@@ -406,38 +396,5 @@ class User implements AdvancedUserInterface, \Serializable
     public function getIsActive()
     {
         return $this->isActive;
-    }
-
-    /**
-     * Add formations
-     *
-     * @param \M2L\FormationBundle\Entity\Formation $formations
-     * @return User
-     */
-    public function addFormation(\M2L\FormationBundle\Entity\Formation $formations)
-    {
-        $this->formations[] = $formations;
-
-        return $this;
-    }
-
-    /**
-     * Remove formations
-     *
-     * @param \M2L\FormationBundle\Entity\Formation $formations
-     */
-    public function removeFormation(\M2L\FormationBundle\Entity\Formation $formations)
-    {
-        $this->formations->removeElement($formations);
-    }
-
-    /**
-     * Get formations
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getFormations()
-    {
-        return $this->formations;
     }
 }
