@@ -13,7 +13,7 @@
 								<span>Du {date debut} au {date fin}</span><br/>
 								<span>Nombre de participants : {nbr inscrit}</span>
 								<span>Description :</span><br/>
-								{{ formation.description | slice(0,350) }}... <a href="{{ path('m2l_formations_view', { 'id' : formation.id }) }}">Voir plus</a>
+								{{ formation.description | slice(0,350) }}... <a href="{{ path('m2l_formation_view', { 'id' : formation.id }) }}">Voir plus</a>
 							</p>
 						</td>
 					</tr>
