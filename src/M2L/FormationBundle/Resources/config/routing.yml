@@ -17,3 +17,7 @@ m2l_formation_edit:
 m2l_my_formation:
     path:   /mes_formations
     defaults: { _controller: M2LFormationBundle:Formation:listformations }
+
+m2l_formation_view:
+    path:   /formations/{id}
+    defaults: { _controller: M2LFormationBundle:Formation:view }

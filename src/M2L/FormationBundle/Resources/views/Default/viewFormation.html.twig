@@ -1,14 +1,14 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-	<h2>Liste des formations disponibles</h2>
+	<h2>Liste de mes formations</h2>
 	<ul id="annonces-liste">
-		{% for formation in allFormations | reverse %}
+		{% for formation in listeFormation | reverse %}
 			<li>
 				<table>
 					<tr>
-						<td class="formation-preview">
-							<h3><a href="{{ path('m2l_formation_view', { 'id' : formation.id }) }}">{{ formation.titre }}</a></h3>
+						<td class="annonce-preview">
+							<h3><a href="{{ path('m2l_formations_view', { 'id' : formation.id }) }}">{{ formation.titre }}</a></h3>
 							<p>
 								<span>Du {date debut} au {date fin}</span><br/>
 								<span>Nombre de participants : {nbr inscrit}</span>
@@ -18,10 +18,9 @@
 						</td>
 					</tr>
 					<tr>
-						<td colspan="2" class="formation-date">
+						<td colspan="2" class="annonce-date">
 							<span>
-								{date post}
-								<!-- {{ formation.date | date("d/m/Y") }}-->
+								{{ formation.date | date("d/m/Y") }}
 							</span>
 						</td>
 					</tr>

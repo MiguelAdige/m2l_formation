@@ -43,6 +43,21 @@ class FormationController extends Controller
     	return $this->render('M2LFormationBundle:Default:addFormation.html.twig', array('form' => $form->createView()));
     }
 
+    public function viewAction($id) {
+
+        if (!$this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->redirect($this->generateUrl("login"));
+        }
+
+        $em = $this->getDoctrine()->getManager();
+
+        $formation = $em->getRepository("M2LFormationBundle:Formation")->find($id);
+
+        return $this->render("M2LFormationBundle:Formation:viewFormation.html.twig", array(
+            "formation"   =>  $formation
+            ));
+    }
+
     public function listformationsAction()
     {
         if (!$this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY')) {
