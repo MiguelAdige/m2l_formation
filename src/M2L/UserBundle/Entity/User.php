@@ -105,7 +105,7 @@ class User implements AdvancedUserInterface, \Serializable
         $this->salt = md5(uniqid(null, true));
         $this->isActive = true;
         $this->roles = 2;
-        $this->formations = \Doctrine\Common\Collections\ArrayCollection();
+        $this->formations = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
