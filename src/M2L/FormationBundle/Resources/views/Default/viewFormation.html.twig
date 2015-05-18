@@ -1,7 +1,6 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-	<h2>Liste de mes formations</h2>
     {% for flashMessage in app.session.flashbag.get('notice') %}
 
         <div class="bg-success">{{ flashMessage }}</div>
@@ -12,17 +11,16 @@
 				<table>
 					<tr>
 						<td class="annonce-preview">
-							<h3><a href="{{ path('m2l_formation_view', { 'id' : formation.id }) }}">{{ formation.titre }}</a></h3>
+							<h3>{{ formation.titre }}</h3>
 							<p>
-								<span>Du {date debut} au {date fin}</span><br/>
-								<span>Nombre de participants : {nbr inscrit}</span>
+								<span>Du {{ formation.dateDebut | date("d/m/Y") }} au {{ formation.dateFin | date("d/m/Y") }}</span><br/>
 								<span>Description :</span><br/>
-								{{ formation.description | slice(0,350) }}... <a href="{{ path('m2l_formation_view', { 'id' : formation.id }) }}">Voir plus</a>
+								{{ formation.description }}
 							</p>
 						</td>
 					</tr>
 					<tr>
-						<td colspan="2" class="annonce-date">
+						<td class="annonce-date">
 							<span>
 								{{ formation.datePost | date("d/m/Y") }}
 							</span>
@@ -41,7 +39,8 @@
                     {% if not viewLink %}
                     <a class="btn" href="{{ path('m2l_add_my_formation', { 'id' : formation.id }) }}">Postuler pour cette formation</a>
                     {% else %}
-                        <p class="notice">Vous avez dejà postuler pour ce poste !</p>
+                        <p class="notice">Vous avez dejà postuler pour ce poste !</p>                        
+						<a class="btn" href="{{ path('m2l_delete_my_formation', { 'id' : formation.id }) }}">Se désinscrire</a>
                     {% endif %}
 			</ii>
 	<ul>

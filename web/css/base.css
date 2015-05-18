@@ -453,3 +453,7 @@ FOOTER
     color:#fff !important;
     padding: 5px 10px;
 }
+.notice a {
+	text-decoration: underline;
+	color: black;
+}

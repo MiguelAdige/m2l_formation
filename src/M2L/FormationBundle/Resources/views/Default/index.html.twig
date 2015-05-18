@@ -7,20 +7,19 @@
 			<li>
 				<table>
 					<tr>
-						<td class="formation-preview">
+						<td class="annonce-preview">
 							<h3><a href="{{ path('m2l_formation_view', { 'id' : formation.id }) }}">{{ formation.titre }}</a></h3>
 							<p>
 								Du {{formation.dateDebut | date("d/m/Y")}} au {{formation.dateFin | date("d/m/Y")}}<br/>
-								Nombre de participants : {{formation.nbrInscrit}} <br/>
 								Description :<br/>
 								{{ formation.description | slice(0,350) }}... <a href="{{ path('m2l_formation_view', { 'id' : formation.id }) }}">Voir plus</a>
 							</p>
 						</td>
 					</tr>
 					<tr>
-						<td colspan="2" class="formation-date">
+						<td class="annonce-date">
 							<span>
-								{{ formation.datePost | date("d/m/Y") }}
+								Posté le : {{ formation.datePost | date("d/m/Y") }}
 							</span>
 						</td>
 					</tr>

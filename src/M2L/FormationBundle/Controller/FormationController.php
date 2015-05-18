@@ -105,4 +105,27 @@ class FormationController extends Controller
 
 
     }
+
+    public function deleteMyFormationAction($id)
+    {
+        if (!$this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->redirect($this->generateUrl("login"));
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $formation = $em->getRepository("M2LFormationBundle:Formation")->findOneById($id);
+
+        $user = $this->getUser();
+        $user->removeFormation($formation);
+
+        $em->persist($user);
+
+        if(!$em->flush()){
+            $this->get('session')->getFlashBag()->add('notice', 'Votre désinscription à bien été prise en compte.');
+        }
+
+        return $this->redirect($this->generateUrl("m2l_formation_view", array('id' => $id)));
+
+
+    }
 }

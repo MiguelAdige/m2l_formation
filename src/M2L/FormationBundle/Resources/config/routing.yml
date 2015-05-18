@@ -18,6 +18,10 @@ m2l_add_my_formation:
     path:   /mes_formations/add/{id}
     defaults: { _controller: M2LFormationBundle:Formation:addMyFormation }
 
+m2l_delete_my_formation:
+    path:   /mes_formations/delete/{id}
+    defaults: { _controller: M2LFormationBundle:Formation:deleteMyFormation }
+
 m2l_my_formation:
     path:   /mes_formations
     defaults: { _controller: M2LFormationBundle:Formation:listformations }
